@@ -1,0 +1,18 @@
+.bodyTitle {
+  font-size: 1.6em;
+  font-family: 'Segoe UI';
+  text-transform: uppercase;
+  margin-top: 0;
+  color: var(--pallete-text-darkBlue);
+}
+
+.cardTitle {
+  background-color: var(--pallete-indigo);
+  color: var(--pallete-white);
+  padding: 15px 15px 7px 15px;
+  border-radius: 20px 20px 0 0;
+  font-weight: 600;
+  font-family: 'Inter';
+  margin: 0;
+  font-size: 1.1em;
+}

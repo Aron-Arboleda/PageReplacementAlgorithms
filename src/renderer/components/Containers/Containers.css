@@ -1,0 +1,29 @@
+.largeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--pallete-white);
+  border-radius: 7px;
+  padding: 40px;
+}
+
+.mainContainer {
+  padding: 5px 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.centerContainer {
+  width: 100%;
+  max-width: 1460px;
+}
+
+.cardContainer {
+  border: 1px solid black;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.386);
+  border-radius: 23px;
+  background-color: white;
+}

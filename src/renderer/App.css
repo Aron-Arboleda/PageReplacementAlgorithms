@@ -1,0 +1,282 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* main pallete */
+  --pallete-indigo: #0c1633;
+  --pallete-white: #fffcf4;
+  --pallete-orange: #ff7c04;
+  --pallete-lighter-orange: #ff9e4f;
+  --pallete-blue: #5e90fc;
+  --pallete-light-indigo: #5569a3;
+  --pallete-black: #1b1b1b;
+  --pallete-light-grey: #7e7e7e;
+
+  --pallete-text-darkBlue: #0c1633;
+
+  --pallete-cosmic-latte: #fff9e4;
+  --pallete-peach-yellow: #f7dba7;
+  --pallete-desert-sand: #e0b49e;
+  --pallete-atomic-tangerine: #f1ab86;
+  --pallete-brown-sugar: #c57b57;
+  --pallete-gunmetal: #1e2d2f;
+  --pallete-dark-green: #041f1e;
+}
+
+body {
+  background-color: var(--pallete-gunmetal);
+}
+
+p {
+  margin: 0;
+}
+
+.headingContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.bodyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.inputContainer {
+  display: grid;
+  gap: 35px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.beamCardsInputContainer {
+  display: grid;
+  gap: 35px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.beamsInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cardBody {
+  position: relative;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-size: 0.8em;
+  font-family: 'Inter';
+  font-weight: 600;
+  color: var(--pallete-text-darkBlue);
+}
+
+input[type='text'],
+input[type='number'] {
+  padding: 5px;
+  border-radius: 2px;
+  border: 2px solid var(--pallete-text-darkBlue);
+}
+/* select {
+  padding: 5px;
+  border-radius: 1px;
+  border: 2px solid var(--pallete-text-darkBlue);
+} */
+
+.halfGridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 20px;
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.calculateButtonColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+
+.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.section-highlight {
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: #fef3c7;
+  padding: 0.75rem;
+  margin-top: 1rem;
+}
+
+.outputImage {
+  width: 160px;
+  object-fit: contain;
+}
+
+.outputInitialResultContainer {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 20px;
+  border-bottom: 2px solid var(--pallete-black);
+  padding-bottom: 20px;
+}
+
+.finalOutputContainer,
+.outputInfoContainer {
+  font-size: 0.8rem;
+}
+
+.outputInfoContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+}
+
+.finalResultText-top {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.finalResultText {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.highlighted {
+  background-color: #fffdb9;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.results-table th,
+.results-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.results-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.outputSection {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.output-actions {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  gap: 10px;
+  margin: 20px 20px 20px 0px;
+}
+
+.rowrow {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 10px;
+}
+
+.pdf-control {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.pdf-control-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gridContainerFixedGroup {
+  height: fit-content;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter.ttf');
+}

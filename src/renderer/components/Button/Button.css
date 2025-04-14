@@ -1,0 +1,72 @@
+.button-classic {
+  background-color: var(--pallete-orange);
+  border: 1px solid black;
+  border-radius: 7px;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.386);
+  color: var(--pallete-white);
+  padding: 10px 20px;
+  width: 250px;
+  font-family: 'Inter';
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button-classic:hover {
+  background-color: var(--pallete-lighter-orange);
+}
+
+.button-information {
+  background-color: var(--pallete-light-indigo);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--pallete-white);
+  border-radius: 50%;
+  font-size: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.button-information:hover {
+  background-color: var(--pallete-indigo);
+}
+
+.information-container {
+  display: none;
+  position: absolute;
+}
+
+.info-button-container:hover .information-container {
+  display: block;
+}
+
+.information-image {
+  width: 300px;
+  position: absolute;
+  z-index: 1000;
+}
+
+button[type='submit'],
+button[type='button'] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.disabled {
+  background-color: #ececec;
+  color: var(--pallete-dark-gray);
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  background-color: #ececec;
+}
