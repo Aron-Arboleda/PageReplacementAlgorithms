@@ -1,19 +1,11 @@
-// import { SlabProvider } from './SampleContext';
+import { ComputingProvider } from './ComputingContext';
+import { ResultsProvider } from './ResultsContext';
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    // <ComputingProvider>
-    //   <GeneralInfoProvider>
-    //     <SlabProvider>
-    //       <BeamProvider>
-    //         <FootingProvider>
-    //           <ColumnsProvider>{children}</ColumnsProvider>
-    //         </FootingProvider>
-    //       </BeamProvider>
-    //     </SlabProvider>
-    //   </GeneralInfoProvider>
-    // </ComputingProvider>
-    <div></div>
+    <ComputingProvider>
+      <ResultsProvider>{children}</ResultsProvider>
+    </ComputingProvider>
   );
 };
 

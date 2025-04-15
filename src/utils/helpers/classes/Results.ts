@@ -2,33 +2,6 @@ import { FIFO } from './FIFO';
 import { LRU } from './LRU';
 import { OPT } from './OPT';
 
-export interface OutputType {
-  pageNumber: number;
-  memoryState: (number | null)[];
-}
-
-export abstract class PageReplacementAlgorithm {
-  // Inputs
-  name: string;
-  referenceString: string;
-  noOfFrames: number;
-  recordOfOutputs: OutputType[];
-  pageFaults: number;
-  abstract compute(): void;
-
-  constructor() {
-    this.name = '';
-    this.referenceString = '';
-    this.noOfFrames = 0;
-    this.recordOfOutputs = [];
-    this.pageFaults = 0;
-  }
-
-  assignValues(parametersObject: any): void {
-    Object.assign(this, parametersObject);
-  }
-}
-
 export class Results {
   referenceString: string;
   noOfFrames: number;
@@ -71,5 +44,9 @@ export class Results {
     // const algorithms = [fifo, lru, opt];
     // algorithms.sort((a, b) => a.pageFaults - b.pageFaults);
     // this.algorithmWithLeastPageFaults = algorithms[0];
+  }
+
+  assignValues(parametersObject: any): void {
+    Object.assign(this, parametersObject);
   }
 }

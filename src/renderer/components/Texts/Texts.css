@@ -17,3 +17,16 @@
   margin: 0;
   font-size: 13px;
 }
+
+.infoLabel {
+  font-size: 0.8em;
+  font-family: 'Livvic';
+  font-weight: bold;
+  color: black;
+}
+
+.infoValue {
+  font-size: 0.8em;
+  font-family: 'Inter';
+  color: black;
+}

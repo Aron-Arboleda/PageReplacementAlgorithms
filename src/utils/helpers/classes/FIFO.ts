@@ -1,5 +1,7 @@
-import { PageReplacementAlgorithm } from './PageReplacement';
-import { OutputType } from './PageReplacement';
+import {
+  OutputType,
+  PageReplacementAlgorithm,
+} from '@utils/helpers/classes/PageReplacementAlgorithm';
 
 export class FIFO extends PageReplacementAlgorithm {
   constructor({

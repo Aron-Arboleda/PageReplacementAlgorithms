@@ -1,20 +1,21 @@
-// import { Columns } from '@utils/helpers/classes/columns';
-// import { Footing } from '@utils/helpers/classes/footing';
-// import registerPromiseWorker from 'promise-worker/register';
-// registerPromiseWorker(async (message) => {
-//   if (message.type === 'computeColumnsSeparateMessage') {
-//     const columnsObject = new Columns();
-//     const columns = message.columns;
-//     columnsObject.assignValues(columns);
+import { Results } from '@utils/helpers/classes/results';
+import registerPromiseWorker from 'promise-worker/register';
 
-//     await columnsObject.computeColumn();
-//     return JSON.stringify({ columns: columnsObject });
-//   } else if (message.type === 'computeFootingSeparateMessage') {
-//     const footingObject = new Footing();
-//     const footing = message.footing;
-//     footingObject.assignValues(footing);
+registerPromiseWorker(async (message) => {
+  if (message.type === 'computeResultsSeparateMessage') {
+    const resultsObject = new Results();
+    const results = message.results;
+    resultsObject.assignValues(results);
 
-//     await footingObject.computeFooting();
-//     return JSON.stringify({ footing: footingObject });
-//   }
-// });
+    await resultsObject.runAlgorithms();
+    return JSON.stringify({ results: resultsObject });
+  }
+  //  else if (message.type === 'computeFootingSeparateMessage') {
+  //   const footingObject = new Footing();
+  //   const footing = message.footing;
+  //   footingObject.assignValues(footing);
+
+  //   await footingObject.computeFooting();
+  //   return JSON.stringify({ footing: footingObject });
+  // }
+});

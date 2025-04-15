@@ -1,4 +1,4 @@
-import { PageReplacementAlgorithm } from './PageReplacement';
+import { PageReplacementAlgorithm } from './PageReplacementAlgorithm';
 
 export class LRU extends PageReplacementAlgorithm {
   constructor({

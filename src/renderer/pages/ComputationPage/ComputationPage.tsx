@@ -1,51 +1,53 @@
-import { FieldButton } from '@components/Button/Button';
+import Button, { FieldButton } from '@components/Button/Button';
 import {
   CardContainer,
   GridContainerFixed,
   LargeContainer,
 } from '@components/Containers/Containers';
 import Main from '@components/Containers/Main';
-import { BodyTitle } from '@components/Texts/Texts';
+import { BodyTitle, InfoLabel, InfoValue } from '@components/Texts/Texts';
+import { Results } from '@utils/helpers/classes/results';
+
 import {
   generateRandomNumberString,
   handleNumericInput,
   handleNumericPaste,
 } from '@utils/helpers/helpers';
-import { Box, Copy } from 'lucide-react';
-import { useRef } from 'react';
+import { computeResultsSeparate } from '@utils/workers/computationThreads/index.js';
+import { Box, Copy, Loader } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useController, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { useComputing } from 'src/renderer/contexts/ComputingContext';
+import { useResults } from 'src/renderer/contexts/ResultsContext';
 
 export interface ComputationInputs {
   referenceString: string;
-  numberOfFrames: number;
+  noOfFrames: number;
 }
 
 const defaultValuesForInputs = {
   referenceString: '7,3,2,3,8,5,4,3,6,8,9,7,5,4,3,6,8',
-  numberOfFrames: 3,
+  noOfFrames: 3,
 };
 
 const ComputationPage = () => {
-  // const { generalInfo, setGeneralInfo, isDisabled, setIsDisabled } =
-  //   useGeneralInfo();
-  // const { footing, setFooting } = useFooting();
-  // const { columns, setColumns } = useColumns();
-  // // const { slab } = useSlab();
-  // const { beam, setBeam } = useBeam();
-  // const [values, setValues] = useState<GeneralInfo | null>(null);
-  // const navigate = useNavigate();
+  const [isCalculating, setIsCalculating] = useState(false);
+  const { setComputing } = useComputing();
+  const { resultsGeneral, setResultsGeneral } = useResults();
 
-  // const inputsDefaultValues = generalInfo
-  //   ? generalInfo
-  //   : defaultValuesForInputs;
-
-  // useEffect(() => {
-  //   if (generalInfo) {
-  //     setValues(generalInfo);
-  //   }
-  // }, [generalInfo]);
-
+  const [results, setResults] = useState<Results | null>(null);
   const referenceStringRef = useRef<HTMLTextAreaElement>(null);
+
+  const inputsDefaultValues = resultsGeneral
+    ? resultsGeneral
+    : defaultValuesForInputs;
+
+  useEffect(() => {
+    if (resultsGeneral) {
+      setResults(resultsGeneral);
+    }
+  }, [resultsGeneral]);
 
   const {
     register,
@@ -55,7 +57,7 @@ const ComputationPage = () => {
     watch,
     setValue,
   } = useForm<ComputationInputs>({
-    defaultValues: defaultValuesForInputs,
+    defaultValues: inputsDefaultValues,
   });
 
   const { field, fieldState } = useController({
@@ -71,8 +73,33 @@ const ComputationPage = () => {
   });
 
   const onSubmit: SubmitHandler<ComputationInputs> = async (data) => {
+    setIsCalculating(true);
+    setComputing(true);
+
     try {
-    } catch (error) {}
+      computeResultsSeparate(data).then((results) => {
+        const resultsObj = JSON.parse(results).results;
+
+        const resultsInstance = new Results();
+        resultsInstance.assignValues(resultsObj);
+
+        setResults(resultsInstance);
+        setResultsGeneral(resultsInstance);
+        setIsCalculating(false);
+        setComputing(false);
+        toast.success('Results successfully calculated.', {
+          autoClose: 2000,
+        });
+      });
+    } catch (error) {
+      toast.error(
+        'Page Replacement Algorithms execution error: "' + error + '"',
+      );
+      setResults(null);
+      setResultsGeneral(null);
+      setIsCalculating(false);
+      setComputing(false);
+    }
   };
 
   const handleGenerateRandom = () => {
@@ -96,7 +123,7 @@ const ComputationPage = () => {
   return (
     <Main>
       <LargeContainer>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="headingContainer">
             <BodyTitle title={'Page Replacement Algorithms:'} />
           </div>
@@ -108,64 +135,107 @@ const ComputationPage = () => {
                 gap: '2rem',
               }}
             >
-              <CardContainer title="Inputs">
-                <div className="inputField">
-                  <label htmlFor="referenceString">Reference String</label>
-                  <div className="field">
-                    <div className="fieldActionButtons">
-                      <FieldButton onClick={handleGenerateRandom} Icon={Box} />
-                      <FieldButton
-                        onClick={handleCopyReferenceString}
-                        Icon={Copy}
+              <div>
+                <CardContainer title="Inputs">
+                  <div className="inputField">
+                    <label htmlFor="referenceString">Reference String</label>
+                    <div className="field">
+                      <div className="fieldActionButtons">
+                        <FieldButton
+                          onClick={handleGenerateRandom}
+                          Icon={Box}
+                        />
+                        <FieldButton
+                          onClick={handleCopyReferenceString}
+                          Icon={Copy}
+                        />
+                      </div>
+                      <textarea
+                        id="referenceString"
+                        className="fieldInside"
+                        rows={1}
+                        ref={(e) => {
+                          referenceStringRef.current = e; // your custom ref
+                          field.ref(e); // hook form ref
+                        }}
+                        value={field.value}
+                        onChange={(e) => {
+                          field.onChange(e); // make sure form state updates
+                          const target = e.target as HTMLTextAreaElement;
+                          target.style.height = 'auto';
+                          target.style.height = `${target.scrollHeight}px`;
+                        }}
+                        onBlur={field.onBlur}
                       />
+                      {fieldState.error && (
+                        <span className="error">
+                          {fieldState.error.message}
+                        </span>
+                      )}
                     </div>
-                    <textarea
-                      id="referenceString"
-                      className="fieldInside"
-                      rows={1}
-                      ref={(e) => {
-                        referenceStringRef.current = e; // your custom ref
-                        field.ref(e); // hook form ref
-                      }}
-                      value={field.value}
-                      onChange={(e) => {
-                        field.onChange(e); // make sure form state updates
-                        const target = e.target as HTMLTextAreaElement;
-                        target.style.height = 'auto';
-                        target.style.height = `${target.scrollHeight}px`;
-                      }}
-                      onBlur={field.onBlur}
+                  </div>
+                  <div className="inputField">
+                    <label htmlFor="noOfFrames">Number of Frames</label>
+                    <input
+                      type="number"
+                      id="noOfFrames"
+                      min={1}
+                      {...register('noOfFrames', {
+                        required: 'Number of columns is required',
+                        min: {
+                          value: 1,
+                          message: 'At least one column is required',
+                        },
+                        valueAsNumber: true,
+                      })}
+                      onKeyDown={handleNumericInput}
+                      onPaste={handleNumericPaste}
                     />
-                    {fieldState.error && (
-                      <span className="error">{fieldState.error.message}</span>
+                    {errors.noOfFrames && (
+                      <span className="error">{errors.noOfFrames.message}</span>
                     )}
                   </div>
-                </div>
-                <div className="inputField">
-                  <label htmlFor="numberOfFrames">Number of Frames</label>
-                  <input
-                    type="number"
-                    id="numberOfFrames"
-                    min={1}
-                    {...register('numberOfFrames', {
-                      required: 'Number of columns is required',
-                      min: {
-                        value: 1,
-                        message: 'At least one column is required',
-                      },
-                      valueAsNumber: true,
-                    })}
-                    onKeyDown={handleNumericInput}
-                    onPaste={handleNumericPaste}
+                </CardContainer>
+                <div className="calculateButtonContainer">
+                  <Button
+                    text={isCalculating ? 'Calculating...' : 'Calculate'}
+                    disabled={isCalculating}
+                    className={isCalculating ? 'disabled' : ''}
+                    icon={
+                      isCalculating ? (
+                        <Loader className="spinner" size={12} />
+                      ) : undefined
+                    }
+                    type="submit"
+                    style={{ width: '80%' }}
                   />
-                  {errors.numberOfFrames && (
-                    <span className="error">
-                      {errors.numberOfFrames.message}
-                    </span>
-                  )}
                 </div>
+              </div>
+              <CardContainer title="Output">
+                {isCalculating && (
+                  <div className="loading-container">
+                    <Loader className="spinner" size={32} />
+                    <p>Calculating results...</p>
+                  </div>
+                )}
+                {!isCalculating && !results && (
+                  <p>Fill in the form and click "Calculate" to see results.</p>
+                )}
+                {!isCalculating && results && (
+                  <GridContainerFixed
+                    style={{
+                      gap: '0.1rem',
+                      gridTemplateColumns: '13% 1fr',
+                    }}
+                  >
+                    <InfoLabel label="Reference String:" />
+                    <InfoValue value={results.referenceString} />
+                    <InfoLabel label="Number of Frames:" />
+                    <InfoValue value={results.noOfFrames} />
+                  </GridContainerFixed>
+                )}
+                <div></div>
               </CardContainer>
-              <div></div>
             </GridContainerFixed>
           </div>
         </form>

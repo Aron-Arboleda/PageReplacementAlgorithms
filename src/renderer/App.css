@@ -186,6 +186,13 @@ textarea {
   height: fit-content;
 }
 
+.calculateButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
 @font-face {
   font-family: 'Inter';
   src: url('assets/fonts/Inter.ttf');
