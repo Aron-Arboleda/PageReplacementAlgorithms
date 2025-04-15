@@ -1,5 +1,3 @@
-import { compute, computeString } from './computations/mathLibrariesFunctions';
-
 export const handleNumericInput = (
   e: React.KeyboardEvent<HTMLInputElement>,
 ) => {
@@ -41,33 +39,18 @@ export const handleDecimalPaste = (
   }
 };
 
-export function removeDuplicates<T>(arr: T[]): T[] {
-  return [...new Set(arr)];
-}
-
-export function toRankString(number: number): string {
-  if (!Number.isInteger(number) || number <= 0) {
-    return `0`;
-  }
-
-  const suffixes = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
-  const numStr = number.toString();
-
-  if (numStr.endsWith('11') || numStr.endsWith('12') || numStr.endsWith('13')) {
-    return `${number}th`;
-  }
-
-  const lastDigit = number % 10;
-  return `${number}${suffixes[lastDigit]}`;
-}
-
-export function roundToThreeDecimals(numStr: string | undefined) {
-  if (!numStr) return undefined; // Handle undefined input
-  let num = parseFloat(numStr);
-  if (isNaN(num)) return 'Invalid input'; // Handle invalid numbers
-  return parseFloat(num.toFixed(3)).toString(); // Remove trailing zeros
-}
-
 export function multiplyString(str: string, times: number) {
   return str.repeat(times);
+}
+
+export function generateRandomNumberString(limit: number = 50): string {
+  const count = Math.floor(Math.random() * limit) + 1; // 1 to 50
+
+  const numbers: number[] = [];
+  for (let i = 0; i < count; i++) {
+    const randomDigit = Math.floor(Math.random() * 10); // 0 to 9
+    numbers.push(randomDigit);
+  }
+
+  return numbers.join(',');
 }

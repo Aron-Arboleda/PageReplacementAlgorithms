@@ -70,3 +70,17 @@ button[type='button'] {
 .disabled:hover {
   background-color: #ececec;
 }
+
+.field-button {
+  background-color: transparent;
+  border: none;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.field-button:hover {
+  background-color: rgba(185, 185, 185, 0.379);
+}

@@ -46,12 +46,22 @@
 }
 
 .navBarContainer {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   padding: 10px;
 }
 
+.navBarLogoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--pallete-brown-sugar);
+  border: 1.7px solid black;
+  padding: 5px 13px;
+  border-bottom-left-radius: 9px;
+  border-top-left-radius: 9px;
+}
+
 .navBarLogo {
-  width: 80px;
+  width: 50px;
   cursor: pointer;
 }
 
@@ -68,10 +78,16 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0px 20px;
   background: transparent;
-  border-radius: 7px;
+  border-radius: 9px;
+  outline: 1.7px solid black;
+  outline-offset: -1.7px;
   z-index: 499; /* Ensure it is above the navBar */
+  background-color: var(--pallete-peach-yellow);
+  font-family: 'Miriam Libre';
+  font-size: 13;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .navBarLinks {
@@ -83,29 +99,34 @@
 }
 
 .navBarLinks a {
-  color: var(--pallete-white);
+  color: black;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
-  font-family: 'Inter';
   width: auto;
   height: 30px;
   text-align: center;
   padding: 0px 10px;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
+  border-radius: 7px;
+  transition: all 0s ease-in-out;
 }
 
 .navBarLinks.active {
-  color: var(--pallete-blue);
-  font-weight: bold;
+  color: black;
+  background-color: white;
+  outline: 1.7px solid black;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navBarLinks li a:hover {
-  background-color: rgba(0, 0, 0, 0.39);
-  color: var(--pallete-blue);
+  color: black;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navBarLinks li a:active {
+  background-color: rgb(205, 205, 205);
 }
 
 .navLinksContainer {

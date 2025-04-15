@@ -5,16 +5,33 @@ export const LargeContainer = ({ children }: { children: React.ReactNode }) => {
   return <div className="largeContainer">{children}</div>;
 };
 
-export const CardContainer = ({
-  children,
+export const CardTitle = ({
+  title,
   style,
 }: {
-  children: React.ReactNode;
+  title: string;
   style?: React.CSSProperties;
 }) => {
   return (
+    <h2 className="cardTitle" style={style}>
+      {title}
+    </h2>
+  );
+};
+
+export const CardContainer = ({
+  children,
+  style,
+  title = 'Card Title',
+}: {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  title: string;
+}) => {
+  return (
     <div className="cardContainer" style={style}>
-      {children}
+      <CardTitle title={title} />
+      <div className="cardBody">{children}</div>
     </div>
   );
 };
@@ -43,11 +60,11 @@ export const GridContainer = ({
 export const GridContainerFixed = ({
   children,
   style,
-  noOfGroups,
+  noOfGroups = 2,
 }: {
   children: React.ReactNode;
   style?: React.CSSProperties;
-  noOfGroups: number;
+  noOfGroups?: number;
 }) => {
   const newStyle: React.CSSProperties = {
     display: 'grid',

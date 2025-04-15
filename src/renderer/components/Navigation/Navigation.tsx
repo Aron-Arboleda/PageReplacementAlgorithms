@@ -40,15 +40,17 @@ const Navigation: React.FC = () => {
   return (
     <>
       <div className="navBarHeader">
-        <img
-          src={logo}
-          alt="Draft 2 Dimen Logo"
-          className="navBarLogo"
-          onClick={(e) => {
-            e.preventDefault();
-            handleNavigation('/'); // Navigate to root
-          }}
-        />
+        <div className="navBarLogoContainer">
+          <img
+            src={logo}
+            alt="Draft 2 Dimen Logo"
+            className="navBarLogo"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavigation('/'); // Navigate to root
+            }}
+          />
+        </div>
         <div className="navLinksContainer">
           <ul className="navBarLinks">
             {navigations.map((nav: NavigationItem, index: number) => (

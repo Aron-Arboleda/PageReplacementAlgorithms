@@ -36,6 +36,7 @@
 
 body {
   background-color: var(--pallete-gunmetal);
+  margin: 0;
 }
 
 p {
@@ -86,54 +87,61 @@ p {
   gap: 10px;
 }
 
-.field {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.cardBody {
-  position: relative;
-  padding: 25px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 label {
   font-size: 0.8em;
-  font-family: 'Inter';
-  font-weight: 600;
-  color: var(--pallete-text-darkBlue);
+  font-family: 'Livvic';
+  font-weight: bold;
+  color: black;
 }
 
 input[type='text'],
 input[type='number'] {
-  padding: 5px;
-  border-radius: 2px;
-  border: 2px solid var(--pallete-text-darkBlue);
-}
-/* select {
-  padding: 5px;
-  border-radius: 1px;
-  border: 2px solid var(--pallete-text-darkBlue);
-} */
-
-.halfGridContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 20px;
+  border-radius: 3px;
+  border: 1.7px solid black;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3px 5px;
+  font-family: 'Inter';
 }
 
-.columnContainer {
+input[type='number']:focus {
+  outline: none;
+}
+
+.field {
+  background-color: white;
+  outline: 1.7px solid black;
+  outline-offset: -1.7px;
+  border-radius: 3px;
+  position: relative;
+  padding: 30px 5px 10px 5px;
+}
+
+.fieldInside {
+  width: 100%;
+  resize: none; /* optional: prevents manual resizing */
+  overflow: hidden; /* hides scrollbars */
+  line-height: 1.5;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  padding: 0px 10px 0px 10px;
+}
+.fieldInside:focus {
+  outline: none;
+}
+
+.fieldActionButtons {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
 }
 
-.calculateButtonColumn {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+textarea {
+  font-family: 'Inter';
 }
 
 .inputGrid {
@@ -174,104 +182,6 @@ input[type='number'] {
   margin-top: 0.25rem;
 }
 
-.section-highlight {
-  font-size: 1.5rem;
-  font-weight: 600;
-  background-color: #fef3c7;
-  padding: 0.75rem;
-  margin-top: 1rem;
-}
-
-.outputImage {
-  width: 160px;
-  object-fit: contain;
-}
-
-.outputInitialResultContainer {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 20px;
-  border-bottom: 2px solid var(--pallete-black);
-  padding-bottom: 20px;
-}
-
-.finalOutputContainer,
-.outputInfoContainer {
-  font-size: 0.8rem;
-}
-
-.outputInfoContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  gap: 20px;
-}
-
-.finalResultText-top {
-  margin-top: 1rem;
-  font-weight: 600;
-}
-
-.finalResultText {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.highlighted {
-  background-color: #fffdb9;
-}
-
-.results-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.results-table th,
-.results-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
-
-.results-table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-.outputSection {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-}
-
-.output-actions {
-  display: flex;
-  width: 100%;
-  justify-content: right;
-  gap: 10px;
-  margin: 20px 20px 20px 0px;
-}
-
-.rowrow {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  gap: 10px;
-}
-
-.pdf-control {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  gap: 10px;
-}
-
-.pdf-control-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
 .gridContainerFixedGroup {
   height: fit-content;
 }
@@ -279,4 +189,14 @@ input[type='number'] {
 @font-face {
   font-family: 'Inter';
   src: url('assets/fonts/Inter.ttf');
+}
+
+@font-face {
+  font-family: 'Miriam Libre';
+  src: url('assets/fonts/MiriamLibre.ttf');
+}
+
+@font-face {
+  font-family: 'Livvic';
+  src: url('assets/fonts/Livvic.ttf');
 }
