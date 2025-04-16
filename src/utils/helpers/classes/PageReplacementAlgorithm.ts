@@ -10,6 +10,7 @@ export class PageReplacementAlgorithm {
   noOfFrames: number;
   recordOfOutputs: OutputType[];
   pageFaults: number;
+  infos: string[];
 
   constructor() {
     this.name = '';
@@ -17,6 +18,7 @@ export class PageReplacementAlgorithm {
     this.noOfFrames = 0;
     this.recordOfOutputs = [];
     this.pageFaults = 0;
+    this.infos = [];
   }
 
   assignValues(parametersObject: any): void {

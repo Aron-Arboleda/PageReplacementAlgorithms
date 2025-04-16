@@ -42,3 +42,14 @@
   display: flex;
   gap: 2rem;
 }
+
+.highlightedResultText {
+  background-color: var(--pallete-cosmic-latte);
+  outline: 1.7px solid black;
+  padding: 3px 7px;
+  font-family: 'Miriam Libre';
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 1rem;
+  width: fit-content;
+}

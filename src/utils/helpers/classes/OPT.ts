@@ -16,6 +16,11 @@ export class OPT extends PageReplacementAlgorithm {
     this.name = 'Optimal Algorithm';
     this.referenceString = referenceString;
     this.noOfFrames = noOfFrames;
+    this.infos = [
+      'The Optimal Page Replacement Algorithm (OPT) is a theoretical page replacement algorithm that replaces the page that will not be used for the longest period of time in the future.',
+      'It is considered the best page replacement algorithm in terms of page faults, but it is impractical to implement in real systems because it requires future knowledge of page references.',
+      'The optimal algorithm is often used as a benchmark to compare the performance of other page replacement algorithms.',
+    ];
   }
 
   compute(): void {

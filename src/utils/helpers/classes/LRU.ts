@@ -16,6 +16,11 @@ export class LRU extends PageReplacementAlgorithm {
     this.name = 'Least Recently Used (LRU) Algorithm';
     this.referenceString = referenceString;
     this.noOfFrames = noOfFrames;
+    this.infos = [
+      'Least Recently Used (LRU) is a page replacement algorithm that replaces the page that has not been used for the longest period of time.',
+      'It keeps track of the order in which pages are accessed and replaces the least recently used page when a page fault occurs.',
+      'LRU is more efficient than FIFO and OPT in many cases, especially when the reference string exhibits locality of reference.',
+    ];
   }
 
   compute(): void {
@@ -41,6 +46,7 @@ export class LRU extends PageReplacementAlgorithm {
       } else {
         const distances: { pageNumber: number; distance: number }[] = [];
         for (let j = 0; j < generalMemory.length; j++) {
+          // Only difference from OPT is here
           const pastPageNumbers = pageNumbers.slice(0, i).reverse();
           const distance = pastPageNumbers.indexOf(Number(generalMemory[j]));
           distances.push({

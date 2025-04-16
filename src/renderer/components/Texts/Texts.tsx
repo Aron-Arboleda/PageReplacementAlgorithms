@@ -16,8 +16,18 @@ export const InfoValue = ({ value }: { value: string | number }) => {
   return <span className="infoValue">{value}</span>;
 };
 
-export const Heading2Text = ({ text }: { text: string }) => {
-  return <h2 className="heading2Text">{text}</h2>;
+export const Heading2Text = ({
+  text,
+  style,
+}: {
+  text: string;
+  style?: React.CSSProperties;
+}) => {
+  return (
+    <h2 className="heading2Text" style={style}>
+      {text}
+    </h2>
+  );
 };
 
 export const OneLineLabelValueText = ({
@@ -33,4 +43,8 @@ export const OneLineLabelValueText = ({
       <InfoValue value={value} />
     </div>
   );
+};
+
+export const HighlightedResultText = ({ text }: { text: string }) => {
+  return <span className="highlightedResultText">{text}</span>;
 };

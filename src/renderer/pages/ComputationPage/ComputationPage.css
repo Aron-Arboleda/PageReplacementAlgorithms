@@ -1,0 +1,36 @@
+.analysisTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.analysisTable th,
+.analysisTable td {
+  padding: 7px 12px;
+  text-wrap: nowrap;
+}
+
+/* Top border under header */
+.analysisTable thead tr {
+  font-family: 'Livvic';
+  border-bottom: 2px solid black;
+}
+
+/* Middle vertical border */
+.analysisTable th:first-child,
+.analysisTable td:first-child {
+  border-right: 2px solid black;
+}
+
+/* Optional: spacing and removing default table spacing */
+.analysisTable th {
+  font-weight: bold;
+}
+
+.infoList {
+  padding: 0;
+  margin: 0;
+  margin-left: 1rem;
+  font-size: 0.7rem;
+}

@@ -15,6 +15,11 @@ export class FIFO extends PageReplacementAlgorithm {
     this.name = 'First-In-First-Out (FIFO) Algorithm';
     this.referenceString = referenceString;
     this.noOfFrames = noOfFrames;
+    this.infos = [
+      'FIFO (First-In-First-Out) is a page replacement algorithm that replaces the oldest page in memory when a new page needs to be loaded.',
+      'In FIFO, the pages are organized in a queue, and the page that has been in memory the longest is replaced first.',
+      'This algorithm is simple to implement but can lead to suboptimal performance in certain scenarios.',
+    ];
   }
 
   compute(): void {

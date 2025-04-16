@@ -1,18 +1,53 @@
 import './Button.css';
-import { LucideProps } from 'lucide-react';
+import { Copy, CopyCheck, LucideProps } from 'lucide-react';
 import React, { useState, useRef, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 interface FieldButtonProps {
   onClick: () => void;
   Icon: React.ForwardRefExoticComponent<
     Omit<LucideProps, 'ref'> & React.RefAttributes<SVGSVGElement>
   >;
+  tooltip: string;
 }
 
-export const FieldButton = ({ onClick, Icon }: FieldButtonProps) => {
+export const FieldButton = ({ onClick, Icon, tooltip }: FieldButtonProps) => {
   return (
-    <button onClick={onClick} className="field-button" type="button">
+    <button
+      title={tooltip}
+      onClick={onClick}
+      className="field-button"
+      type="button"
+    >
       <Icon size={20} />
+    </button>
+  );
+};
+
+export const CopyButton = ({ text }: { text: string }) => {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyReferenceString = () => {
+    navigator.clipboard.writeText(text); // Copy it to the clipboard
+    setIsCopied(true); // Set the copied state to true
+    toast.success('Reference string copied to clipboard!', { autoClose: 1200 }); // Show a success message
+    setTimeout(() => {
+      setIsCopied(false); // Reset the copied state after 2 seconds
+    }, 2000); // Change the duration as needed
+  };
+
+  return (
+    <button
+      title={isCopied ? 'Text copied!' : 'Copy to clipboard'}
+      onClick={handleCopyReferenceString}
+      className="field-button"
+      type="button"
+    >
+      {isCopied ? (
+        <CopyCheck size={20} onClick={() => setIsCopied(false)} />
+      ) : (
+        <Copy size={20} onClick={() => setIsCopied(true)} />
+      )}
     </button>
   );
 };

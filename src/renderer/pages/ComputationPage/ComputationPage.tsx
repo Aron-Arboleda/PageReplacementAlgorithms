@@ -1,12 +1,20 @@
-import Button, { FieldButton } from '@components/Button/Button';
+import Button, { CopyButton, FieldButton } from '@components/Button/Button';
 import {
   AlgorithmInterfaceComponent,
   CardContainer,
+  FlexContainer,
   GridContainerFixed,
   LargeContainer,
+  WhiteContainer,
 } from '@components/Containers/Containers';
 import Main from '@components/Containers/Main';
-import { BodyTitle, InfoLabel, InfoValue } from '@components/Texts/Texts';
+import {
+  BodyTitle,
+  Heading2Text,
+  HighlightedResultText,
+  InfoLabel,
+  InfoValue,
+} from '@components/Texts/Texts';
 import { Results } from '@utils/helpers/classes/Results';
 
 import {
@@ -15,12 +23,14 @@ import {
   handleNumericPaste,
 } from '@utils/helpers/helpers';
 import { computeResultsSeparate } from '@utils/workers/computationThreads/index.js';
-import { Box, Copy, Loader } from 'lucide-react';
+import { Box, Copy, Loader, Search } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useController, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useComputing } from 'src/renderer/contexts/ComputingContext';
 import { useResults } from 'src/renderer/contexts/ResultsContext';
+
+import './ComputationPage.css';
 
 export interface ComputationInputs {
   referenceString: string;
@@ -116,10 +126,10 @@ const ComputationPage = () => {
     }, 0);
   };
 
-  const handleCopyReferenceString = () => {
-    const referenceString = watch('referenceString'); // Get the current value of the reference string
-    navigator.clipboard.writeText(referenceString); // Copy it to the clipboard
-  };
+  // const handleCopyReferenceString = () => {
+  //   const referenceString = watch('referenceString'); // Get the current value of the reference string
+  //   navigator.clipboard.writeText(referenceString); // Copy it to the clipboard
+  // };
 
   return (
     <Main>
@@ -145,11 +155,9 @@ const ComputationPage = () => {
                         <FieldButton
                           onClick={handleGenerateRandom}
                           Icon={Box}
+                          tooltip="Generate Random"
                         />
-                        <FieldButton
-                          onClick={handleCopyReferenceString}
-                          Icon={Copy}
-                        />
+                        <CopyButton text={field.value} />
                       </div>
                       <textarea
                         id="referenceString"
@@ -261,6 +269,99 @@ const ComputationPage = () => {
                         label="Total Page Faults:"
                         value={results.lruResults?.pageFaults || 0}
                       />
+                    </div>
+                    <div>
+                      <WhiteContainer
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '1rem',
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                          }}
+                        >
+                          <Search size={25} />
+                          <Heading2Text
+                            text="Analysis"
+                            style={{ marginTop: '2px' }}
+                          />
+                        </div>
+                        <div
+                          style={{
+                            display: 'flex',
+                            gap: '2rem',
+                          }}
+                        >
+                          <div>
+                            <table className="analysisTable">
+                              <thead>
+                                <tr>
+                                  <th>Algorithm</th>
+                                  <th>Page Faults</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {results.finalResultsTable.map(
+                                  (result, index) => (
+                                    <tr key={index}>
+                                      <td>{result.algorithm}</td>
+                                      <td>{result.pageFaults}</td>
+                                    </tr>
+                                  ),
+                                )}
+                              </tbody>
+                            </table>
+                          </div>
+                          <FlexContainer style={{ gap: '0.2rem' }}>
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.5rem',
+                              }}
+                            >
+                              <InfoLabel label="Algorithm(s) in this scenario with least total page faults: " />
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  gap: '0.5rem',
+                                  flexWrap: 'wrap',
+                                }}
+                              >
+                                {results.algorithmsWithLeastPageFaults.map(
+                                  (algorithm, index) => (
+                                    <HighlightedResultText
+                                      key={index}
+                                      text={algorithm?.name || ''}
+                                    />
+                                  ),
+                                )}
+                              </div>
+                            </div>
+                            <div>
+                              {results.algorithmsWithLeastPageFaults.map(
+                                (algorithm, index) => (
+                                  <>
+                                    <InfoLabel
+                                      label={`Info about ${algorithm?.name}:`}
+                                    />
+                                    <ul className="infoList">
+                                      {algorithm?.infos.map((info, index) => (
+                                        <li key={index}>{info}</li>
+                                      ))}
+                                    </ul>
+                                  </>
+                                ),
+                              )}
+                            </div>
+                          </FlexContainer>
+                        </div>
+                      </WhiteContainer>
                     </div>
                   </>
                 )}

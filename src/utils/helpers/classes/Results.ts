@@ -8,7 +8,8 @@ export class Results {
   fifoResults: FIFO | null;
   optResults: OPT | null;
   lruResults: LRU | null;
-  algorithmWithLeastPageFaults: FIFO | OPT | LRU | null;
+  finalResultsTable: { algorithm: string; pageFaults: number }[];
+  algorithmsWithLeastPageFaults: (FIFO | OPT | LRU | null)[];
 
   constructor() {
     this.referenceString = '';
@@ -16,7 +17,8 @@ export class Results {
     this.fifoResults = null;
     this.optResults = null;
     this.lruResults = null;
-    this.algorithmWithLeastPageFaults = null;
+    this.algorithmsWithLeastPageFaults = [];
+    this.finalResultsTable = [];
   }
 
   runAlgorithms(): void {
@@ -41,9 +43,26 @@ export class Results {
     lru.compute();
     this.lruResults = lru;
 
-    // const algorithms = [fifo, lru, opt];
-    // algorithms.sort((a, b) => a.pageFaults - b.pageFaults);
-    // this.algorithmWithLeastPageFaults = algorithms[0];
+    this.finalResultsTable = [
+      {
+        algorithm: 'First-In-First-Out (FIFO)',
+        pageFaults: fifo.pageFaults,
+      },
+      {
+        algorithm: 'Optimal (OPT)',
+        pageFaults: opt.pageFaults,
+      },
+      {
+        algorithm: 'Least Recently Used (LRU)',
+        pageFaults: lru.pageFaults,
+      },
+    ];
+
+    const algorithms = [fifo, lru, opt];
+    algorithms.sort((a, b) => a.pageFaults - b.pageFaults);
+    this.algorithmsWithLeastPageFaults = algorithms.filter(
+      (algorithm) => algorithm.pageFaults === algorithms[0].pageFaults,
+    );
   }
 
   assignValues(parametersObject: any): void {
