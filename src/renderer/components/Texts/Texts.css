@@ -31,7 +31,8 @@
   color: black;
 }
 
-.heading2Text {
+.heading2Text,
+.miriamLibreText {
   font-family: 'Miriam Libre';
   font-size: 20px;
   color: black;
@@ -52,4 +53,12 @@
   font-weight: bold;
   font-size: 1rem;
   width: fit-content;
+}
+
+.normalInterText {
+  font-family: 'Inter';
+  font-size: 0.9rem;
+  color: black;
+  margin: 0;
+  text-align: justify;
 }

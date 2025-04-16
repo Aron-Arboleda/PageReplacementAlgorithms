@@ -1,0 +1,13 @@
+.infoImage {
+  width: 160px;
+  height: 160px;
+  outline: 1px solid black;
+  border-radius: 5px;
+}
+
+.infoGroupContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}

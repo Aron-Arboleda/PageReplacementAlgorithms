@@ -136,7 +136,7 @@ const ComputationPage = () => {
       <LargeContainer>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="headingContainer">
-            <BodyTitle title={'Page Replacement Algorithms:'} />
+            <BodyTitle title={'Page Replacement Algorithms'} />
           </div>
           <div className="bodyContainer">
             <GridContainerFixed
@@ -228,7 +228,10 @@ const ComputationPage = () => {
                   </div>
                 )}
                 {!isCalculating && !results && (
-                  <p>Fill in the form and click "Calculate" to see results.</p>
+                  <p>
+                    Fill in the "Inputs" card and click "Calculate" to see
+                    results.
+                  </p>
                 )}
                 {!isCalculating && results && (
                   <>

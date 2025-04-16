@@ -1,7 +1,17 @@
 import './Texts.css';
 
-export const BodyTitle = ({ title }: { title: String }) => {
-  return <h1 className="bodyTitle">{title}</h1>;
+export const BodyTitle = ({
+  title,
+  style,
+}: {
+  title: String;
+  style?: React.CSSProperties;
+}) => {
+  return (
+    <h1 className="bodyTitle" style={style}>
+      {title}
+    </h1>
+  );
 };
 
 export const CardTitle = ({ title }: { title: String }) => {
@@ -30,6 +40,20 @@ export const Heading2Text = ({
   );
 };
 
+export const MiriamLibreText = ({
+  text,
+  style,
+}: {
+  text: string;
+  style?: React.CSSProperties;
+}) => {
+  return (
+    <p className="miriamLibreText" style={style}>
+      {text}
+    </p>
+  );
+};
+
 export const OneLineLabelValueText = ({
   label,
   value,
@@ -47,4 +71,18 @@ export const OneLineLabelValueText = ({
 
 export const HighlightedResultText = ({ text }: { text: string }) => {
   return <span className="highlightedResultText">{text}</span>;
+};
+
+export const NormalInterText = ({
+  children,
+  style,
+}: {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}) => {
+  return (
+    <span className="normalInterText" style={style}>
+      {children}
+    </span>
+  );
 };

@@ -28,12 +28,12 @@ export const CopyButton = ({ text }: { text: string }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyReferenceString = () => {
-    navigator.clipboard.writeText(text); // Copy it to the clipboard
-    setIsCopied(true); // Set the copied state to true
-    toast.success('Reference string copied to clipboard!', { autoClose: 1200 }); // Show a success message
+    navigator.clipboard.writeText(text);
+    setIsCopied(true);
+    toast.success('Reference string copied to clipboard!', { autoClose: 1200 });
     setTimeout(() => {
-      setIsCopied(false); // Reset the copied state after 2 seconds
-    }, 2000); // Change the duration as needed
+      setIsCopied(false);
+    }, 2000);
   };
 
   return (
