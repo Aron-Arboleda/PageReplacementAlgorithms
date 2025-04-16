@@ -27,19 +27,19 @@ export class Results {
     fifo.compute();
     this.fifoResults = fifo;
 
+    const opt = new OPT({
+      referenceString: this.referenceString,
+      noOfFrames: this.noOfFrames,
+    });
+    opt.compute();
+    this.optResults = opt;
+
     // const lru = new LRU({
     //   referenceString: this.referenceString,
     //   noOfFrames: this.noOfFrames,
     // });
     // lru.compute();
     // this.lruResults = lru;
-
-    // const opt = new OPT({
-    //   referenceString: this.referenceString,
-    //   noOfFrames: this.noOfFrames,
-    // });
-    // opt.compute();
-    // this.optResults = opt;
 
     // const algorithms = [fifo, lru, opt];
     // algorithms.sort((a, b) => a.pageFaults - b.pageFaults);

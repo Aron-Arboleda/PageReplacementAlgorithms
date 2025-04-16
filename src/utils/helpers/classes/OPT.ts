@@ -1,4 +1,7 @@
-import { PageReplacementAlgorithm } from './PageReplacementAlgorithm';
+import {
+  PageReplacementAlgorithm,
+  OutputType,
+} from './PageReplacementAlgorithm';
 
 export class OPT extends PageReplacementAlgorithm {
   constructor({
@@ -14,5 +17,73 @@ export class OPT extends PageReplacementAlgorithm {
     this.noOfFrames = noOfFrames;
   }
 
-  compute(): void {}
+  compute(): void {
+    const pageNumbers = this.referenceString.split(',').map(Number);
+    const outputTable: OutputType[] = [];
+    const generalMemory: (number | null)[] = Array(this.noOfFrames).fill(null);
+    let totalPageFaults = 0;
+    for (let i = 0; i < pageNumbers.length; i++) {
+      const pageNumber = pageNumbers[i];
+      let memoryState: (number | null)[] = Array(this.noOfFrames).fill(null);
+
+      if (generalMemory.includes(pageNumber)) {
+        outputTable.push({
+          pageNumber,
+          memoryState,
+        });
+        continue;
+      }
+
+      if (generalMemory.includes(null)) {
+        const index = generalMemory.indexOf(null);
+        generalMemory[index] = pageNumber;
+      } else {
+        const distances: { pageNumber: number; distance: number }[] = [];
+        for (let j = 0; j < generalMemory.length; j++) {
+          const distance = pageNumbers.indexOf(Number(generalMemory[j]), i);
+          distances.push({
+            pageNumber: Number(generalMemory[j]),
+            distance: distance,
+          });
+        }
+        const farthest = getFarthestPageNumber(distances);
+        const indexOfPageNumberToChange = generalMemory.indexOf(
+          farthest.pageNumber,
+        );
+        generalMemory[indexOfPageNumberToChange] = pageNumber;
+      }
+
+      totalPageFaults++;
+      memoryState = [...generalMemory];
+
+      outputTable.push({
+        pageNumber,
+        memoryState,
+      });
+    }
+
+    this.recordOfOutputs = outputTable;
+    this.pageFaults = totalPageFaults;
+  }
+}
+
+function getFarthestPageNumber(
+  distances: { pageNumber: number; distance: number }[],
+): { pageNumber: number; distance: number } {
+  // Find all entries with distance === -1 (infinity)
+  const infinityDistances = distances.filter((item) => item.distance === -1);
+
+  if (infinityDistances.length > 0) {
+    // Randomly select one from infinityDistances
+    const randomIndex = Math.floor(Math.random() * infinityDistances.length);
+    return infinityDistances[randomIndex];
+  }
+
+  // If no -1 distances, find the entry with the maximum distance
+  const farthest = distances.reduce(
+    (max, current) => (current.distance > max.distance ? current : max),
+    distances[0],
+  );
+
+  return farthest;
 }

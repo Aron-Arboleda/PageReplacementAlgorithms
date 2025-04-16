@@ -235,12 +235,25 @@ const ComputationPage = () => {
                       <InfoLabel label="Number of Frames:" />
                       <InfoValue value={results.noOfFrames} />
                     </GridContainerFixed>
-                    <div style={{ margin: '1rem 0' }}>
+                    <div
+                      style={{
+                        margin: '1rem 0',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1rem',
+                      }}
+                    >
                       <AlgorithmInterfaceComponent
-                        title="First-In-First-Out (FIFO) Algorithm"
+                        title={results.fifoResults?.name || ''}
                         data={results.fifoResults?.recordOfOutputs || []}
                         label="Total Page Faults:"
                         value={results.fifoResults?.pageFaults || 0}
+                      />
+                      <AlgorithmInterfaceComponent
+                        title={results.optResults?.name || ''}
+                        data={results.optResults?.recordOfOutputs || []}
+                        label="Total Page Faults:"
+                        value={results.optResults?.pageFaults || 0}
                       />
                     </div>
                   </>

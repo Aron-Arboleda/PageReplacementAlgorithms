@@ -1,4 +1,4 @@
-import { Results } from '@utils/helpers/classes/results';
+import { Results } from '@utils/helpers/classes/Results';
 import registerPromiseWorker from 'promise-worker/register';
 
 registerPromiseWorker(async (message) => {
