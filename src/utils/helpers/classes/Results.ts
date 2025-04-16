@@ -34,12 +34,12 @@ export class Results {
     opt.compute();
     this.optResults = opt;
 
-    // const lru = new LRU({
-    //   referenceString: this.referenceString,
-    //   noOfFrames: this.noOfFrames,
-    // });
-    // lru.compute();
-    // this.lruResults = lru;
+    const lru = new LRU({
+      referenceString: this.referenceString,
+      noOfFrames: this.noOfFrames,
+    });
+    lru.compute();
+    this.lruResults = lru;
 
     // const algorithms = [fifo, lru, opt];
     // algorithms.sort((a, b) => a.pageFaults - b.pageFaults);

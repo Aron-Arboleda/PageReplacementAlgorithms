@@ -255,6 +255,12 @@ const ComputationPage = () => {
                         label="Total Page Faults:"
                         value={results.optResults?.pageFaults || 0}
                       />
+                      <AlgorithmInterfaceComponent
+                        title={results.lruResults?.name || ''}
+                        data={results.lruResults?.recordOfOutputs || []}
+                        label="Total Page Faults:"
+                        value={results.lruResults?.pageFaults || 0}
+                      />
                     </div>
                   </>
                 )}
