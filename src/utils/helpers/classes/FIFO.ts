@@ -21,11 +21,11 @@ export class FIFO extends PageReplacementAlgorithm {
     const pageNumbers = this.referenceString.split(',').map(Number);
     const outputTable: OutputType[] = [];
     let indexTracker = 0;
-    const generalMemory: number[] = [];
+    const generalMemory: (number | null)[] = Array(this.noOfFrames).fill(null);
     let totalPageFaults = 0;
     for (let i = 0; i < pageNumbers.length; i++) {
       const pageNumber = pageNumbers[i];
-      let memoryState: (number | null)[] = Array(3).fill(null);
+      let memoryState: (number | null)[] = Array(this.noOfFrames).fill(null);
 
       if (generalMemory.includes(pageNumber)) {
         outputTable.push({

@@ -15,3 +15,22 @@ export const InfoLabel = ({ label }: { label: string }) => {
 export const InfoValue = ({ value }: { value: string | number }) => {
   return <span className="infoValue">{value}</span>;
 };
+
+export const Heading2Text = ({ text }: { text: string }) => {
+  return <h2 className="heading2Text">{text}</h2>;
+};
+
+export const OneLineLabelValueText = ({
+  label,
+  value,
+}: {
+  label: string;
+  value: string | number;
+}) => {
+  return (
+    <div className="oneLineLabelValueText">
+      <InfoLabel label={label} />
+      <InfoValue value={value} />
+    </div>
+  );
+};

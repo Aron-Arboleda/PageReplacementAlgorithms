@@ -1,12 +1,13 @@
 import Button, { FieldButton } from '@components/Button/Button';
 import {
+  AlgorithmInterfaceComponent,
   CardContainer,
   GridContainerFixed,
   LargeContainer,
 } from '@components/Containers/Containers';
 import Main from '@components/Containers/Main';
 import { BodyTitle, InfoLabel, InfoValue } from '@components/Texts/Texts';
-import { Results } from '@utils/helpers/classes/results';
+import { Results } from '@utils/helpers/classes/Results';
 
 import {
   generateRandomNumberString,
@@ -27,7 +28,7 @@ export interface ComputationInputs {
 }
 
 const defaultValuesForInputs = {
-  referenceString: '7,3,2,3,8,5,4,3,6,8,9,7,5,4,3,6,8',
+  referenceString: '7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1',
   noOfFrames: 3,
 };
 
@@ -222,17 +223,27 @@ const ComputationPage = () => {
                   <p>Fill in the form and click "Calculate" to see results.</p>
                 )}
                 {!isCalculating && results && (
-                  <GridContainerFixed
-                    style={{
-                      gap: '0.1rem',
-                      gridTemplateColumns: '13% 1fr',
-                    }}
-                  >
-                    <InfoLabel label="Reference String:" />
-                    <InfoValue value={results.referenceString} />
-                    <InfoLabel label="Number of Frames:" />
-                    <InfoValue value={results.noOfFrames} />
-                  </GridContainerFixed>
+                  <>
+                    <GridContainerFixed
+                      style={{
+                        gap: '0.1rem',
+                        gridTemplateColumns: '15% 1fr',
+                      }}
+                    >
+                      <InfoLabel label="Reference String:" />
+                      <InfoValue value={results.referenceString} />
+                      <InfoLabel label="Number of Frames:" />
+                      <InfoValue value={results.noOfFrames} />
+                    </GridContainerFixed>
+                    <div style={{ margin: '1rem 0' }}>
+                      <AlgorithmInterfaceComponent
+                        title="First-In-First-Out (FIFO) Algorithm"
+                        data={results.fifoResults?.recordOfOutputs || []}
+                        label="Total Page Faults:"
+                        value={results.fifoResults?.pageFaults || 0}
+                      />
+                    </div>
+                  </>
                 )}
                 <div></div>
               </CardContainer>

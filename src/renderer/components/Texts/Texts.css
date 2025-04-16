@@ -30,3 +30,15 @@
   font-family: 'Inter';
   color: black;
 }
+
+.heading2Text {
+  font-family: 'Miriam Libre';
+  font-size: 20px;
+  color: black;
+  margin: 0;
+}
+
+.oneLineLabelValueText {
+  display: flex;
+  gap: 2rem;
+}

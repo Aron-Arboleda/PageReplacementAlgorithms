@@ -1,4 +1,4 @@
-import { Results } from '@utils/helpers/classes/results';
+import { Results } from '@utils/helpers/classes/Results';
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface ResultsContextType {
