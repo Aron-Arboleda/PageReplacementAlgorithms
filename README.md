@@ -68,7 +68,7 @@ PageReplacementAlgorithms/
 ## Images
 
 ![Computation Page](assets/readme/computationPage.png)
-![About Page](assets/readme/AboutPage.png)
+![About Page](assets/readme/aboutPage.png)
 
 ---
 
