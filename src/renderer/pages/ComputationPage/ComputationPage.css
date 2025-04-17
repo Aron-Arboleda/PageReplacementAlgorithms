@@ -11,19 +11,16 @@
   text-wrap: nowrap;
 }
 
-/* Top border under header */
 .analysisTable thead tr {
   font-family: 'Livvic';
   border-bottom: 2px solid black;
 }
 
-/* Middle vertical border */
 .analysisTable th:first-child,
 .analysisTable td:first-child {
   border-right: 2px solid black;
 }
 
-/* Optional: spacing and removing default table spacing */
 .analysisTable th {
   font-weight: bold;
 }

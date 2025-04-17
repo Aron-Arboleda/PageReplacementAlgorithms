@@ -1,3 +1,14 @@
+/**
+ * The menu.ts file defines and builds the application menu for
+ * the Electron app. It customizes the menu based on the platform
+ * (macOS or others) and environment (development or production),
+ * including features like developer tools, shortcuts, and help links.
+ */
+
+/**
+ * Did not use this file anymore. Keeping it for future changes
+ */
+
 import {
   app,
   Menu,
@@ -57,14 +68,14 @@ export default class MenuBuilder {
       label: 'Electron',
       submenu: [
         {
-          label: 'About Draft2Dimen',
+          label: 'About PageReplacement',
           selector: 'orderFrontStandardAboutPanel:',
         },
         { type: 'separator' },
         { label: 'Services', submenu: [] },
         { type: 'separator' },
         {
-          label: 'Hide Draft2Dimen',
+          label: 'Hide PageReplacement',
           accelerator: 'Command+H',
           selector: 'hide:',
         },

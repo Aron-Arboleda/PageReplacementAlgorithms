@@ -1,3 +1,9 @@
+/**
+ * The assets.d.ts file provides TypeScript type declarations for
+ * various asset file types. It allows TypeScript to understand and properly
+ * handle these file imports in the project.
+ */
+
 type Styles = Record<string, string>;
 
 declare module '*.svg' {

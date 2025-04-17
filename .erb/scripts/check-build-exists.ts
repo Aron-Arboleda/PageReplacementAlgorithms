@@ -1,4 +1,4 @@
-// Check if the renderer and main bundles are built
+// Checking if the renderer and main bundles are built
 import path from 'path';
 import chalk from 'chalk';
 import fs from 'fs';

@@ -1,3 +1,7 @@
+/**
+ * A React component that represents the About Page of the application.
+ */
+
 import {
   CardContainer,
   FlexContainer,
@@ -25,10 +29,11 @@ interface InfoGroupData {
   otherDetails: string[];
 }
 
+// All the data for the About page is stored here
 export const infoGroups: InfoGroupData[] = [
   {
     title: 'First-In-First-Out (FIFO) Algorithm',
-    imageSrc: firstInfirstOutImage, // replace with your actual path
+    imageSrc: firstInfirstOutImage,
     info: 'First-In, First-Out (FIFO) is a simple algorithm that removes the oldest page in memory—the one that was loaded first—whenever a new page needs to be loaded due to a page fault and RAM is full. It uses a queue structure where pages are added to the end when they are loaded, and the page at the front of the queue is removed first. While easy to implement, FIFO can lead to poor performance in some cases because it doesn’t consider how often or how recently a page is used.',
     otherDetails: [
       'Can vary by reference string',
@@ -38,7 +43,7 @@ export const infoGroups: InfoGroupData[] = [
   },
   {
     title: 'Optimal Algorithm',
-    imageSrc: optimalImage, // replace with your actual path
+    imageSrc: optimalImage,
     info: 'The Optimal Page Replacement Algorithm is a theoretical memory management strategy that replaces the page in memory that will not be used for the longest time in the future. It is designed to produce the lowest possible number of page faults by making the best possible decision at each step, assuming perfect knowledge of future memory accesses. Although it cannot be implemented in practice due to the need for future knowledge, it is commonly used as a benchmark to evaluate the efficiency of real-world page replacement algorithms like FIFO and LRU.',
     otherDetails: [
       'Replace page that will not be used for longest period of time',
@@ -48,7 +53,7 @@ export const infoGroups: InfoGroupData[] = [
   },
   {
     title: 'Least Recently Used (LRU) Algorithm',
-    imageSrc: leastRecentlyUsedImage, // replace with your actual path
+    imageSrc: leastRecentlyUsedImage,
     info: 'The Least Recently Used (LRU) Page Replacement Algorithm is a memory management technique that replaces the page that has not been used for the longest period of time. It operates on the assumption that pages used recently are more likely to be used again soon, while those not accessed for a while are less likely to be needed. LRU tracks the usage history of pages, either through counters or stacks, to make its replacement decisions. Although more complex to implement than FIFO, LRU generally performs better by reducing the number of page faults in real-world scenarios.',
     otherDetails: [
       'Use past knowledge rather than future',
@@ -58,6 +63,7 @@ export const infoGroups: InfoGroupData[] = [
   },
 ];
 
+// Resusable component for each info group for the about page
 const InfoGroup = ({ title, imageSrc, info, otherDetails }: InfoGroupData) => {
   return (
     <div className="infoGroupContainer">
@@ -90,6 +96,7 @@ const InfoGroup = ({ title, imageSrc, info, otherDetails }: InfoGroupData) => {
   );
 };
 
+// The main component for the About page
 const AboutPage = () => {
   return (
     <Main>

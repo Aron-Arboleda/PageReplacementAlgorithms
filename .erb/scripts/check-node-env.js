@@ -1,3 +1,10 @@
+/**
+ * The check-node-env.js script ensures that the NODE_ENV environment
+ * variable matches the expected value. If it does not, it logs an
+ * error message and exits the process to prevent misconfiguration
+ * during the build or runtime.
+ */
+
 import chalk from 'chalk';
 
 export default function checkNodeEnv(expectedEnv) {

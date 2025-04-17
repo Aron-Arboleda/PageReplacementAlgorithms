@@ -1,3 +1,10 @@
+/**
+ * The link-modules.ts script creates symbolic links for the node_modules
+ * directory from the app folder to the src and .erb directories. This
+ * ensures that dependencies are accessible in the development environment
+ * without duplication.
+ */
+
 import fs from 'fs';
 import webpackPaths from '../configs/webpack.paths';
 

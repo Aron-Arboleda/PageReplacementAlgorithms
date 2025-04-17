@@ -1,3 +1,8 @@
+/**
+ * Button.tsx file contains all of the button react components that i created to be re-used in
+ * different parts of the application.
+ */
+
 import './Button.css';
 import { Copy, CopyCheck, LucideProps } from 'lucide-react';
 import React, { useState, useRef, useEffect } from 'react';
@@ -10,6 +15,11 @@ interface FieldButtonProps {
   >;
   tooltip: string;
 }
+
+/**
+ * To create the UI components that are re-used throughout the application,
+ * I used JSX syntax. (inline HTML syntax that is treated as values in React Applications)
+ */
 
 export const FieldButton = ({ onClick, Icon, tooltip }: FieldButtonProps) => {
   return (

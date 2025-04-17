@@ -1,3 +1,11 @@
+/**
+ * The delete-source-maps.js script deletes JavaScript
+ * source map files (*.js.map) from the dist/main and
+ * dist/renderer directories. It is used to clean up
+ * source maps, typically for production builds where
+ * they are not needed.
+ */
+
 import fs from 'fs';
 import path from 'path';
 import { rimrafSync } from 'rimraf';

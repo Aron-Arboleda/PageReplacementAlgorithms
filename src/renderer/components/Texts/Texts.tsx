@@ -1,3 +1,7 @@
+/**
+ * This file contains the Text components used in the application.
+ */
+
 import './Texts.css';
 
 export const BodyTitle = ({

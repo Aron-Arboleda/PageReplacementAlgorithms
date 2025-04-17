@@ -1,3 +1,10 @@
+/**
+ * The electron-rebuild.js script runs electron-rebuild to rebuild native
+ * Node.js modules for compatibility with the Electron runtime. It ensures
+ * that dependencies in the app directory are correctly rebuilt for the
+ * target Electron version.
+ */
+
 import { execSync } from 'child_process';
 import fs from 'fs';
 import { dependencies } from '../../release/app/package.json';

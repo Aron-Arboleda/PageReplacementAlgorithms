@@ -1,3 +1,7 @@
+/**
+ * This file contains all of the routes for the application.
+ */
+
 import { Routes, Route } from 'react-router-dom';
 import { navigations } from '@utils/constants/navigations';
 import { NavigationItem } from '@utils/constants/navigations';

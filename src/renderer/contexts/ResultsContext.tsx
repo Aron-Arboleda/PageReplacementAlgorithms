@@ -1,3 +1,8 @@
+/**
+ * This file contains the ResultsContext created using React's useContext State.
+ * It provides a way to manage and share the results state across all components in the application.
+ */
+
 import { Results } from '@utils/helpers/classes/Results';
 import { createContext, useContext, useState, ReactNode } from 'react';
 

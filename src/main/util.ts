@@ -1,4 +1,12 @@
 /* eslint import/prefer-default-export: off */
+
+/**
+ * The util.ts file provides utility functions for the Electron app,
+ * such as resolveHtmlPath, which resolves the correct URL or file
+ * path for loading HTML files based on the environment (development
+ * or production).
+ */
+
 import { URL } from 'url';
 import path from 'path';
 

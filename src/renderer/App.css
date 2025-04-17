@@ -1,7 +1,4 @@
-/*
- * @NOTE: Prepend a `~` to css file paths that are in your node_modules
- *        See https://github.com/webpack-contrib/sass-loader#imports
- */
+/* All of the general styling can be seen here */
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,17 +11,6 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* main pallete */
-  --pallete-indigo: #0c1633;
-  --pallete-white: #fffcf4;
-  --pallete-orange: #ff7c04;
-  --pallete-lighter-orange: #ff9e4f;
-  --pallete-blue: #5e90fc;
-  --pallete-light-indigo: #5569a3;
-  --pallete-black: #1b1b1b;
-  --pallete-light-grey: #7e7e7e;
-
-  --pallete-text-darkBlue: #0c1633;
-
   --pallete-cosmic-latte: #fff9e4;
   --pallete-peach-yellow: #f7dba7;
   --pallete-desert-sand: #e0b49e;
@@ -57,34 +43,9 @@ p {
   gap: 35px;
 }
 
-.inputContainer {
-  display: grid;
-  gap: 35px;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-}
-
-.beamCardsInputContainer {
-  display: grid;
-  gap: 35px;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-}
-
-.beamsInputContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .inputField {
   display: flex;
   flex-direction: column;
-}
-
-.inputSection {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 label {
@@ -119,8 +80,8 @@ input[type='number']:focus {
 
 .fieldInside {
   width: 100%;
-  resize: none; /* optional: prevents manual resizing */
-  overflow: hidden; /* hides scrollbars */
+  resize: none;
+  overflow: hidden;
   line-height: 1.5;
   padding: 0.5rem;
   font-size: 0.8rem;
@@ -182,10 +143,6 @@ textarea {
   margin-top: 0.25rem;
 }
 
-.gridContainerFixedGroup {
-  height: fit-content;
-}
-
 .calculateButtonContainer {
   display: flex;
   justify-content: center;
@@ -193,6 +150,7 @@ textarea {
   margin-top: 20px;
 }
 
+/* Styling for the scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -204,7 +162,7 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(100, 100, 100, 0.4); /* more visible on white */
+  background-color: rgba(100, 100, 100, 0.4);
   border-radius: 4px;
 }
 
@@ -212,6 +170,7 @@ textarea {
   background-color: rgba(100, 100, 100, 0.6);
 }
 
+/* Importing the fonts */
 @font-face {
   font-family: 'Inter';
   src: url('assets/fonts/Inter.ttf');

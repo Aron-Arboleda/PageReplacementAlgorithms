@@ -1,54 +1,3 @@
-/* Existing CSS */
-.navBar {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  transition: all 0.2s ease-in-out;
-  width: 70%;
-  max-width: 250px;
-  background: var(--pallete-indigo);
-  z-index: 1000; /* Ensure it is below the navBar */
-}
-
-.navBar.open {
-  right: 0; /* Slide in */
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.363);
-}
-
-.navBar.closed {
-  right: -250px; /* Slide out */
-}
-
-.navBarOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark transparent background */
-  opacity: 0;
-  visibility: hidden; /* Initially hidden */
-  z-index: 500; /* Ensure it is below the navBar */
-  transition: opacity 0.2s ease-in;
-}
-
-.navBarOverlay.open {
-  opacity: 1;
-  visibility: visible; /* Make the overlay visible */
-}
-
-.navBarOverlay.closed {
-  opacity: 0;
-  visibility: hidden; /* Hide the overlay */
-}
-
-.navBarContainer {
-  padding: 10px;
-}
-
 .navBarLogoContainer {
   display: flex;
   align-items: center;
@@ -133,13 +82,4 @@
   display: flex;
   gap: 10px;
   margin-left: 10px;
-}
-
-.navFirstSection {
-  border-right: 1px solid var(--pallete-white);
-  padding: 0px 20px;
-}
-
-.navSecondSection {
-  padding: 0px 10px;
 }

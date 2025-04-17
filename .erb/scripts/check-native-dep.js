@@ -1,3 +1,9 @@
+/**
+ * Checks for native dependencies (those with a binding.gyp file)
+ * in the project and ensures they are installed correctly in the
+ * app folder for compatibility with Electron. It provides
+ * guidance on how to handle native dependencies if any are detected.
+ */
 import fs from 'fs';
 import chalk from 'chalk';
 import { execSync } from 'child_process';
@@ -12,9 +18,6 @@ if (dependencies) {
     process.exit(0);
   }
   try {
-    // Find the reason for why the dependency is installed. If it is installed
-    // because of a devDependency then that is okay. Warn when it is installed
-    // because of a dependency
     const { dependencies: dependenciesObject } = JSON.parse(
       execSync(`npm ls ${nativeDeps.join(' ')} --json`).toString(),
     );

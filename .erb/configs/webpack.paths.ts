@@ -1,3 +1,9 @@
+/**
+ * Defines and exports commonly used file and directory paths for the
+ * Electron project, such as source, build, and release directories.
+ * It centralizes path management to ensure consistency across the
+ * Webpack configurations and other scripts.
+ */
 const path = require('path');
 
 const rootPath = path.join(__dirname, '../..');

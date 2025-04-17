@@ -1,3 +1,7 @@
+/**
+ * This file creates the root of the React application and renders the App component.
+ */
+
 import { createRoot } from 'react-dom/client';
 import App from './App';
 

@@ -1,3 +1,10 @@
+/**
+ * This file is also a worker file used to register all of
+ * the worker threads used in the application.
+ *
+ * (used also for managing threads)
+ */
+
 import { Results } from '@utils/helpers/classes/Results';
 import registerPromiseWorker from 'promise-worker/register';
 
@@ -10,12 +17,4 @@ registerPromiseWorker(async (message) => {
     await resultsObject.runAlgorithms();
     return JSON.stringify({ results: resultsObject });
   }
-  //  else if (message.type === 'computeFootingSeparateMessage') {
-  //   const footingObject = new Footing();
-  //   const footing = message.footing;
-  //   footingObject.assignValues(footing);
-
-  //   await footingObject.computeFooting();
-  //   return JSON.stringify({ footing: footingObject });
-  // }
 });

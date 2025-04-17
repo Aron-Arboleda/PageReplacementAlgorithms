@@ -1,34 +1,27 @@
+/**
+ * Navigation bar component for the application.
+ */
+
 import './Navigation.css';
 import { navigations } from '@utils/constants/navigations';
 import logo from '@assets/icon.png';
 import { NavigationItem } from '@utils/constants/navigations';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import { useComputing } from 'src/renderer/contexts/ComputingContext';
 import { toast, ToastContainer } from 'react-toastify';
-// import { useGeneralInfo } from 'src/renderer/contexts/GeneralInfoContext';
+import { useComputing } from 'src/renderer/contexts/ComputingContext';
 
 const Navigation: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  // const { computing } = useComputing();
-  // const { isDisabled } = useGeneralInfo();
-
-  const navFirstSection = [navigations[0]];
-  const navSecondSection = navigations.slice(1);
+  const { computing } = useComputing();
 
   const handleNavigation = (path: string | null) => {
-    // if (computing) {
-    //   toast.error('Please wait until the current computation is finished.', {
-    //     autoClose: 2000,
-    //   });
-    //   return;
-    // }
-    // if (!isDisabled) {
-    //   toast.error('Please fill up general information inputs.', {
-    //     autoClose: 2000,
-    //   });
-    //   return;
-    // }
+    if (computing) {
+      toast.error('Please wait until the current computation is finished.', {
+        autoClose: 2000,
+      });
+      return;
+    }
     if (path) {
       navigate(path);
     }
@@ -43,11 +36,11 @@ const Navigation: React.FC = () => {
         <div className="navBarLogoContainer">
           <img
             src={logo}
-            alt="Draft 2 Dimen Logo"
+            alt="Page Replacement Logo"
             className="navBarLogo"
             onClick={(e) => {
               e.preventDefault();
-              handleNavigation('/'); // Navigate to root
+              handleNavigation('/');
             }}
           />
         </div>

@@ -1,3 +1,8 @@
+/**
+ * Containers.tsx file contains all of the container react components
+ * that i created to be re-used in different parts of the application.
+ */
+
 import { multiplyString } from '@utils/helpers/helpers';
 import './Containers.css';
 import { Heading2Text, OneLineLabelValueText } from '@components/Texts/Texts';

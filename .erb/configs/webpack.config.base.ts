@@ -20,7 +20,6 @@ const configuration: webpack.Configuration = {
         use: {
           loader: 'ts-loader',
           options: {
-            // Remove this line to enable type checking in webpack builds
             transpileOnly: true,
             compilerOptions: {
               module: 'nodenext',
@@ -34,17 +33,12 @@ const configuration: webpack.Configuration = {
 
   output: {
     path: webpackPaths.srcPath,
-    // https://github.com/webpack/webpack/issues/1114
     library: { type: 'commonjs2' },
   },
 
-  /**
-   * Determine the array of extensions that should be used to resolve modules.
-   */
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [webpackPaths.srcPath, 'node_modules'],
-    // There is no need to add aliases here, the paths in tsconfig get mirrored
     plugins: [new TsconfigPathsPlugins()],
   },
 

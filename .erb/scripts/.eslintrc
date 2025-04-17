@@ -1,3 +1,8 @@
+/**
+ * A configuration file for ESLint (a JavaScript/TypeScript linter).
+ * Used to catch bugs and syntax issues, etc.
+ */
+
 {
   "rules": {
     "no-console": "off",

@@ -1,3 +1,10 @@
+/**
+ * This file is useful in a way that whenever I need to add a
+ * new page to the application, I just need to add the page
+ * component to the navigations array and it will be automatically
+ * added to the navigation bar.
+ */
+
 import { Calculator, Info } from 'lucide-react';
 import React from 'react';
 import { LucideProps } from 'lucide-react';

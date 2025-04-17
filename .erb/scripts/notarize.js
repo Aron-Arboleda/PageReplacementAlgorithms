@@ -1,3 +1,10 @@
+/**
+ * The notarize.js script notarizes the macOS build of the Electron app
+ * by submitting it to Apple's notarization service. It ensures the app
+ * meets macOS security requirements, but only runs in a CI environment
+ * with the required Apple credentials set.
+ */
+
 const { notarize } = require('@electron/notarize');
 const { build } = require('../../package.json');
 

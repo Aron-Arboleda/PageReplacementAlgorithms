@@ -25,9 +25,6 @@ const configuration: webpack.Configuration = {
 
   externals: ['fsevents', 'crypto-browserify'],
 
-  /**
-   * Use `module` from `webpack.config.renderer.dev.js`
-   */
   module: require('./webpack.config.renderer.dev').default.module,
 
   entry: {
@@ -49,15 +46,6 @@ const configuration: webpack.Configuration = {
       name: '[name]',
     }),
 
-    /**
-     * Create global constants which can be configured at compile time.
-     *
-     * Useful for allowing different behaviour between development builds and
-     * release builds
-     *
-     * NODE_ENV should be production so that modules do not perform certain
-     * development checks
-     */
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),

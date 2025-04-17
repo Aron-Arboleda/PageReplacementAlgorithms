@@ -1,3 +1,8 @@
+/**
+ * This file contains the ComputingContext created using React's useContext State.
+ * It provides a way to let all the parts of the application know if it is currently computing or not.
+ */
+
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface ComputingContextType {

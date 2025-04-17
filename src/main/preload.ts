@@ -1,5 +1,13 @@
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
+
+/**
+ * The preload.ts file defines a secure bridge between the Electron
+ * renderer process and the main process using contextBridge. It
+ * exposes safe IPC methods (sendMessage, on, once) to the renderer
+ * process while preventing direct access to Node.js APIs.
+ */
+
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
 export type Channels = 'ipc-example';

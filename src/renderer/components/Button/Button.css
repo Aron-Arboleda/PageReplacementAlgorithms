@@ -15,43 +15,6 @@
   background-color: var(--pallete-peach-yellow);
 }
 
-.button-information {
-  background-color: var(--pallete-light-indigo);
-  width: 20px;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--pallete-white);
-  border-radius: 50%;
-  font-size: 10px;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 600;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  cursor: pointer;
-}
-
-.button-information:hover {
-  background-color: var(--pallete-indigo);
-}
-
-.information-container {
-  display: none;
-  position: absolute;
-}
-
-.info-button-container:hover .information-container {
-  display: block;
-}
-
-.information-image {
-  width: 300px;
-  position: absolute;
-  z-index: 1000;
-}
-
 button[type='submit'],
 button[type='button'] {
   display: flex;

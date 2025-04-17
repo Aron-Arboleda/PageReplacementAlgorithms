@@ -1,3 +1,10 @@
+/**
+ * Configures Webpack for building and serving the renderer
+ * process of an Electron application in a development
+ * environment. It enables features like hot module replacement,
+ * source maps, and asset handling for development and debugging.
+ */
+
 import 'webpack-dev-server';
 import path from 'path';
 import fs from 'fs';
@@ -11,8 +18,6 @@ import baseConfig from './webpack.config.base';
 import webpackPaths from './webpack.paths';
 import checkNodeEnv from '../scripts/check-node-env';
 
-// When an ESLint server is running, we can't set the NODE_ENV so we'll check if it's
-// at the dev webpack config is not accidentally run in a production environment
 if (process.env.NODE_ENV === 'production') {
   checkNodeEnv('development');
 }
@@ -127,18 +132,6 @@ const configuration: webpack.Configuration = {
 
     new webpack.NoEmitOnErrorsPlugin(),
 
-    /**
-     * Create global constants which can be configured at compile time.
-     *
-     * Useful for allowing different behaviour between development builds and
-     * release builds
-     *
-     * NODE_ENV should be production so that modules do not perform certain
-     * development checks
-     *
-     * By default, use 'development' as NODE_ENV. This can be overriden with
-     * 'staging', for example, by changing the ENV variables in the npm scripts
-     */
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),

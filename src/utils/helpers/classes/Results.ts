@@ -1,3 +1,11 @@
+/**
+ * This file containes the Results class that is used to
+ * store the results of the page replacement algorithms.
+ *
+ * This is also the class that is used in the UI to display
+ * the results of the algorithms.
+ */
+
 import { FIFO } from './FIFO';
 import { LRU } from './LRU';
 import { OPT } from './OPT';
@@ -21,6 +29,10 @@ export class Results {
     this.finalResultsTable = [];
   }
 
+  /**
+   * This function is used to run the algorithms and store the results
+   * in the class properties.
+   */
   runAlgorithms(): void {
     const fifo = new FIFO({
       referenceString: this.referenceString,
@@ -65,6 +77,7 @@ export class Results {
     );
   }
 
+  // helper function to assign values to the class properties
   assignValues(parametersObject: any): void {
     Object.assign(this, parametersObject);
   }

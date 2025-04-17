@@ -1,3 +1,9 @@
+/**
+ * This is the core UI component of the application.
+ * It represents the Computation Page in its entirety.
+ * This is where all the inputs are gathered and all the outputs are shown.
+ */
+
 import Button, { CopyButton, FieldButton } from '@components/Button/Button';
 import {
   AlgorithmInterfaceComponent,
@@ -23,7 +29,7 @@ import {
   handleNumericPaste,
 } from '@utils/helpers/helpers';
 import { computeResultsSeparate } from '@utils/workers/computationThreads/index.js';
-import { Box, Copy, Loader, Search } from 'lucide-react';
+import { Box, Loader, Search } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useController, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -65,7 +71,6 @@ const ComputationPage = () => {
     control,
     handleSubmit,
     formState: { errors },
-    watch,
     setValue,
   } = useForm<ComputationInputs>({
     defaultValues: inputsDefaultValues,
@@ -117,7 +122,6 @@ const ComputationPage = () => {
     const randomString = generateRandomNumberString();
     setValue('referenceString', randomString);
 
-    // resize textarea
     setTimeout(() => {
       if (referenceStringRef.current) {
         referenceStringRef.current.style.height = 'auto';
@@ -125,11 +129,6 @@ const ComputationPage = () => {
       }
     }, 0);
   };
-
-  // const handleCopyReferenceString = () => {
-  //   const referenceString = watch('referenceString'); // Get the current value of the reference string
-  //   navigator.clipboard.writeText(referenceString); // Copy it to the clipboard
-  // };
 
   return (
     <Main>
@@ -164,24 +163,22 @@ const ComputationPage = () => {
                         className="fieldInside"
                         rows={1}
                         ref={(e) => {
-                          referenceStringRef.current = e; // your custom ref
-                          field.ref(e); // hook form ref
+                          referenceStringRef.current = e;
+                          field.ref(e);
                         }}
                         value={field.value}
                         onChange={(e) => {
-                          field.onChange(e); // make sure form state updates
+                          field.onChange(e);
                           const target = e.target as HTMLTextAreaElement;
                           target.style.height = 'auto';
                           target.style.height = `${target.scrollHeight}px`;
                         }}
                         onBlur={field.onBlur}
                       />
-                      {fieldState.error && (
-                        <span className="error">
-                          {fieldState.error.message}
-                        </span>
-                      )}
                     </div>
+                    {fieldState.error && (
+                      <span className="error">{fieldState.error.message}</span>
+                    )}
                   </div>
                   <div className="inputField">
                     <label htmlFor="noOfFrames">Number of Frames</label>
