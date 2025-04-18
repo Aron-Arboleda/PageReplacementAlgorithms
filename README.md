@@ -72,6 +72,10 @@ PageReplacementAlgorithms/
 
 ---
 
+## Credits
+
+This project used an electron-react boilerplate: [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate)
+
 ## License
 
 This project is licensed under the GPL-3.0 license.
