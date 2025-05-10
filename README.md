@@ -6,10 +6,10 @@ This project is a desktop application built for the Finals Case Study in Operati
 
 ## Technologies Used
 
-- **Electron**: For building the cross-platform desktop application.
+- **Tauri**: For building lightweight, secure, and cross-platform desktop applications using web technologies (like HTML, CSS, JavaScript) combined with a Rust backend.
+- **Rust**: plays the backend/core role in a Tauri application, powering the native layer of the desktop app.
 - **React**: For creating the user interface.
 - **TypeScript**: For type-safe development.
-- **Webpack**: For bundling the application.
 - **CSS**: For styling the application.
 
 ---
@@ -22,59 +22,46 @@ Go to the "Releases" section of this github repository located at the right side
 
 ## Project Structure
 
-Below is the hierarchy of the project directory.
+Below is the hierarchy of the project directory that shows only the necessary files for the implementation of the page replacement algorithms.
 
 ```plaintext
 PageReplacementAlgorithms/
-├── .erb/
 ├── CaseStudyDocuments/
-├── assets/
-├── release/
-├── src/
-│   ├── main/
-│   ├── renderer/
-│   ├── utils/
-│   │   ├── constants/
-│   │   ├── helpers/
-└── └── └── workers/
+└── src/
+    └── utils/
+        ├── constants/
+        ├── helpers/
+        └── workers/
 ```
 
 ### Directory Breakdown
 
-`.erb/` - This directory contains all the compilation configurations, scripts, and webpack settings used by the application.
+- **`CaseStudyDocuments/`**: - This directory contains all the documents required for the case study.
 
-`assets/` - This directory contains static assets such as images, fonts, and type declarations.
+- **`src/`**: - This is the main source directory for the application. (All important source codes can be seen here)
 
-`CaseStudyDocuments/` - This directory contains all the documents required for the case study.
+  - **`utils/`**: Contains the logic and scripts to implement the three page replacement algorithms.
 
-`release/` - This directory contains the general app configurations for compilation
+    - **`constants/`**: Contains all the constant values that is used throughout the application
 
-`src/` - This is the main source directory for the application. (All important source codes can be seen here)
+    - **`helpers/`**: **(CORE BACKEND LOGIC FOLDER)** Contains all the logic functions as well as the classes used to implement the different page replacement algorithms.
 
-- **`main/`**: Contains the backend logic for the Electron app, including the main process and utility scripts.
+    - **`workers/`**: Contains all the scripts used to create separate threads for computation.
 
-- **`renderer/`**: Contains all the React components and styles to render the user interface of the application.
-
-- **`utils/`**: Contains the logic and scripts to implement the three page replacement algorithms.
-
-  - **`constants/`**: Contains all the constant values that is used throughout the application
-
-  - **`helpers/`**: **(CORE BACKEND LOGIC FOLDER)** Contains all the logic functions as well as the classes used to implement the different page replacement algorithms.
-
-  - **`workers/`**: Contains all the scripts used to create separate threads for computation.
+- **Other files and directories are from the [tauri-react code template](https://github.com/elibroftw/modern-desktop-app-template)**
 
 ---
 
 ## Images
 
-![Computation Page](assets/readme/computationPage.png)
-![About Page](assets/readme/aboutPage.png)
+![Computation Page](src/assets/readme/computationPage.png)
+![About Page](src/assets/readme/aboutPage.png)
 
 ---
 
 ## Credits
 
-This project used an electron-react boilerplate: [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate)
+This project used a tauri-react boilerplate: [modern-desktop-app-template](https://github.com/elibroftw/modern-desktop-app-template)
 
 ## License
 

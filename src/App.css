@@ -1,0 +1,187 @@
+/* All of the general styling can be seen here */
+
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* main pallete */
+	--pallete-cosmic-latte: #fff9e4;
+	--pallete-peach-yellow: #f7dba7;
+	--pallete-desert-sand: #e0b49e;
+	--pallete-atomic-tangerine: #f1ab86;
+	--pallete-brown-sugar: #c57b57;
+	--pallete-gunmetal: #1e2d2f;
+	--pallete-dark-green: #041f1e;
+}
+
+body {
+	background-color: var(--pallete-gunmetal);
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+.headingContainer {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: border-box;
+}
+
+.bodyContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 35px;
+}
+
+.inputField {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	font-size: 0.8em;
+	font-family: "Livvic";
+	font-weight: bold;
+	color: black;
+}
+
+input[type="text"],
+input[type="number"] {
+	border-radius: 3px;
+	border: 1.7px solid black;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 3px 5px;
+	font-family: "Inter";
+}
+
+input[type="number"]:focus {
+	outline: none;
+}
+
+.field {
+	background-color: white;
+	outline: 1.7px solid black;
+	outline-offset: -1.7px;
+	border-radius: 3px;
+	position: relative;
+	padding: 30px 5px 10px 5px;
+}
+
+.fieldInside {
+	width: 100%;
+	resize: none;
+	overflow: hidden;
+	line-height: 1.5;
+	padding: 0.5rem;
+	font-size: 0.8rem;
+	border: none;
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	padding: 0px 10px 0px 10px;
+}
+.fieldInside:focus {
+	outline: none;
+}
+
+.fieldActionButtons {
+	display: flex;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+}
+
+textarea {
+	font-family: "Inter";
+}
+
+.inputGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	gap: 10px;
+}
+
+.spinner {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loading-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 120px;
+}
+
+.disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.error {
+	color: red;
+	font-size: 0.8rem;
+	margin-top: 0.25rem;
+}
+
+.calculateButtonContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+/* Styling for the scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(100, 100, 100, 0.4);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(100, 100, 100, 0.6);
+}
+
+/* Importing the fonts */
+@font-face {
+	font-family: "Inter";
+	src: url("./assets/fonts/Inter.ttf");
+}
+
+@font-face {
+	font-family: "Miriam Libre";
+	src: url("./assets/fonts/MiriamLibre.ttf");
+}
+
+@font-face {
+	font-family: "Livvic";
+	src: url("./assets/fonts/Livvic.ttf");
+}
